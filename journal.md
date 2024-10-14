@@ -7,4 +7,13 @@ J'ai créé un dépôt et j'ai synchronisé mon dépôt local avec le dépôt di
 
 # Séance 3
 ## Exercices git
+If you like piña coladas
+And gettin' caught in the rain
+If you're not into yoga
+If you have half a brain
+If you like makin' love at midnight
+In the dunes on the cape
+Then I'm the love that you've looked for
+Write to me and escape
 
+Ceci est une erreurrrrr
