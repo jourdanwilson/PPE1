@@ -1,4 +1,5 @@
 THIS IS AN ERROR
+Cette ligne doit rester après correction.
 
 # Journal de bord du projet encadré
 ## Travail effectué: 01-git-intro exercices
