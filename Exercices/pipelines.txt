@@ -1,0 +1,59 @@
+Exercice 1.a Comptes par années
+
+cd /path/to/Exercice1
+cat ann/2016/01/2016_01_01-001.ann
+cat ann/2016/*/* | wc -l
+echo "Annotations en 2016: $(cat ann/2016/*/* | wc -l)" > comptes.txt
+echo "Annotations en 2017: $(cat ann/2017/*/* | wc -l)" >> comptes.txt
+echo "Annotations en 2018: $(cat ann/2018/*/* | wc -l)" >> comptes.txt
+cat comptes.txt
+mv comptes.txt ../plurital/PPE1/Exercices 
+cd plurital/PPE1 
+git add Exercices/comptes.txt
+git commit -m "Ajoute comptes.txt avec annotation comptes"
+git push origin main
+
+Exercice 1.b 
+
+cd Exercice1
+grep "Location" ann/2016/*/*
+grep -h "Location" ann/2016/*/* | wc -l
+echo "Locations en 2016: $(grep -h "Location" ann/2016/*/* | wc -l)" > Exercices/locations.txt
+echo "Locations en 2017: $(grep -h "Location" ann/2017/*/* | wc -l)" >> Exercices/locations.txt
+echo "Locations en 2018: $(grep -h "Location" ann/2018/*/* | wc -l)" >> Exercices/locations.txt
+git add Exercices/locations.txt
+git commit -m "Ajoute locations.txt avec Location annotations compte"
+git push origin main
+
+
+Exercice 2.a 
+
+grep -h "Location" ann/2016/*/* | cut -f3 | sort | uniq -c | sort -n | head -15
+grep -h "Location" ann/2016/*/* | cut -f3 | sort | uniq -c | sort -nr | head -15
+grep -h "Location" ann/2016/*/* | cut -f3 | sort | uniq -c | sort -nr | head -15 > ../plurital/PPE1/Exercices/classement_2016.txt
+grep -h "Location" ann/2017/*/* | cut -f3 | sort | uniq -c | sort -nr | head -15 > ../plurital/PPE1/Exercices/classement_2017.txt
+grep -h "Location" ann/2018/*/* | cut -f3 | sort | uniq -c | sort -nr | head -15 > ../plurital/PPE1/Exercices/classement_2018.txt
+git add ../plurital/PPE1/Exercices/classement_2016.txt ../plurital/PPE1/Exercices/classement_2017.txt ../plurital/PPE1/Exercices/classement_2018.txt
+git add Exercices/classement_2016.txt Exercices/classement_2017.txt Exercices/classement_2018.txt
+git commit -m "Ajoute top 15 lieux les plus cités pour chaque année: 2016, 2017, and 2018"
+git push origin main
+
+Exercice 2.b
+
+grep -h "Location" ann/*/03/* | cut -f3 | sort | uniq -c | sort -nr | head -15
+grep -h "Location" ann/*/03/* | cut -f3 | sort | uniq -c | sort -nr | head -15 > ../plurital/PPE1/Exercices/classement_mars.txt 
+cd ../plurital/PPE1
+git add Exercices/classement_mars.txt
+git commit -m "Ajoute top 15 lieux les plus cités pour mars pour chaque année"
+git push origin main
+
+Vérifications et tag
+history
+cd Exercices
+ls
+nano pipelines.txt
+git add pipelines.txt
+git commit -m "Ajoute pipelines.txt fichier avec pipeline exercices"
+git push origin main
+
+
