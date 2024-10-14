@@ -1,4 +1,4 @@
-THIS IS AN ERROR
+
 Cette ligne doit rester après correction.
 
 # Journal de bord du projet encadré
@@ -7,6 +7,4 @@ J'ai créé un dépôt et j'ai synchronisé mon dépôt local avec le dépôt di
 
 # Séance 3
 ## Exercices git
-
-
 
