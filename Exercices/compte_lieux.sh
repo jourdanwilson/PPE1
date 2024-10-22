@@ -1,5 +1,18 @@
 #!/bin/bash
 
+
+# Validate number of arguments (expecting 3: year, month, and num_locations)
+[ $# -ne 3 ] && echo "Usage: $0 <year> <month> <num_locations>" && exit 1
+
+# Validate the year (must be 4 digits or "*")
+[[ ! "$1" =~ ^[0-9]{4}$ && "$1" != "*" ]] && echo "Error: Year must be a four-digit number or '*'." && exit 1
+
+# Validate the month (must be two digits or "*")
+[[ ! "$2" =~ ^(0[1-9]|1[0-2])$ && "$2" != "*" ]] && echo "Error: Month must be in MM format or '*'." && exit 1
+
+# Validate num_locations is a positive integer
+[[ ! "$3" =~ ^[0-9]+$ ]] && echo "Error: Number of locations must be a positive integer." && exit 1
+
 year=$1
 month=$2
 num_locations=$3

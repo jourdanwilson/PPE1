@@ -1,5 +1,14 @@
 #!/bin/bash
 
+# Validate number of arguments (expecting 2: year and entity type)
+[ $# -ne 2 ] && echo "Usage: $0 <year> <entity_type>" && exit 1
+
+# Validate the year (must be 4 digits or "*")
+[[ ! "$1" =~ ^[0-9]{4}$ && "$1" != "*" ]] && echo "Error: Year must be a four-digit number or '*'." && exit 1
+
+# Validate entity type is not empty
+[ -z "$2" ] && echo "Error: Entity type cannot be empty." && exit 1
+
 #arguments
 year=$1
 entity_type=$2
