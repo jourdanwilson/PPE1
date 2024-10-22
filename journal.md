@@ -72,3 +72,42 @@ git push origin main
 Exercice 5 : Créer un tag final
 À la fin, j'ai créé un tag git-seance3-fin avec la commande git tag -a git-seance3-fin -m "séance 3, version finale des exercices de git" et l'ai poussé avec git push origin git-seance3-fin.
 
+## Seance 4
+
+**Date**: 2024-10-21
+
+J'ai travaillé sur le script comptes.sh, qui permet de compter les occurrences de "Location" dans les fichiers .ann pour les années 2016, 2017 et 2018. Le script itère sur les années et utilise grep pour rechercher et compter les occurrences de "Location". J'ai ajouté la variable base_dir car les fichiers .ann n'étaient pas dans le même dossier que le script.
+
+Étapes suivies :
+
+Utilisation de nano pour créer/modifier le fichier.
+Ajout des permissions d'exécution avec chmod +x comptes.sh.
+Exécution du script, qui a affiché :
+Année 2016: 3144 lieux trouvés
+Année 2017: 2466 lieux trouvés
+Année 2018: 3110 lieux trouvés
+Ajout du script au dépôt Git (git add, git commit, git push).
+Exercice 2:
+
+Exercice 2.a: J'ai créé un script compte_par_type.sh qui prend deux arguments : une année et un type d'entité (par exemple, "Location"). Ce script compte les occurrences de l'entité donnée dans les fichiers .ann et affiche seulement le nombre. Il inclut une validation des arguments pour s'assurer que l'utilisateur fournit bien une année valide (4 chiffres ou *) et un type d'entité non vide.
+
+Ensuite, j'ai écrit compte_par_type_par_an.sh, qui appelle compte_par_type.sh pour chaque année de 2016 à 2018. Ce script affiche le nombre d'entités par année et vérifie que l'utilisateur passe bien un type d'entité valide.
+
+J'ai rendu ces scripts exécutables et les ai testés avec les arguments appropriés.
+
+Exercice 2.b: Pour le script compte_lieux.sh, j'ai implémenté un système qui prend trois arguments : une année, un mois et un nombre de lieux à afficher. Le script peut utiliser * pour itérer sur toutes les années et/ou mois, et il compte et classe les lieux les plus mentionnés dans les fichiers .ann. Le script fonctionne, mais j'ai rencontré un problème avec la gestion du joker * lors de la recherche sur plusieurs années/mois, que je dois corriger.
+
+Les scripts modifiés ont été ajoutés et synchronisés avec Git.
+
+Exercice 3:
+
+J'ai modifié mes scripts pour valider leurs arguments sans créer de nouveaux scripts. La validation vérifie que le nombre d'arguments est correct et que l'année et le type d'entité sont valides. J'ai utilisé une approche simple avec les conditions Bash pour vérifier que les arguments sont bien fournis.
+
+Les scripts ont été mis à jour et synchronisés avec Git :
+
+git add Exercices/compte_par_type.sh Exercices/compte_par_type_par_an.sh Exercices/compte_lieux.sh
+git commit -m "Ajoute la validation des arguments aux scripts"
+git push origin main
+Exercice 4:
+
+J'ai expliqué le fonctionnement de la boucle dans le script comptes.sh. La boucle itère sur les années 2016, 2017, et 2018, utilisant grep pour rechercher le mot "Location" dans les fichiers .ann, puis compte le nombre de lignes contenant ce mot avec wc -l. Le script affiche ensuite le nombre de lieux trouvés pour chaque année.
