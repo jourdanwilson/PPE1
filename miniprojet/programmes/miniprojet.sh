@@ -1,34 +1,40 @@
 #!/bin/bash
 
-# Check if a file argument is provided
-if [ -z "$1" ]; then
-    echo "Error: No file provided. Please specify a file with URLs."
+# Define the input and output files
+INPUT_FILE="/Users/jourdanwilson/Desktop/school/projet_encadre/plurital/PPE1/miniprojet/tableaux/tableau-fr.tsv"
+OUTPUT_FILE="/Users/jourdanwilson/Desktop/school/projet_encadre/plurital/PPE1/miniprojet/tableaux/tableau-fr.html"
+
+# Check if the input file exists
+if [ ! -f "$INPUT_FILE" ]; then
+    echo "Error: Input file '$INPUT_FILE' not found."
     exit 1
 fi
 
-# Initialize a counter for line numbers
-line_number=1
+# Start the HTML structure
+echo "<!DOCTYPE html>" > "$OUTPUT_FILE"
+echo "<html lang='en'>" >> "$OUTPUT_FILE"
+echo "<head>" >> "$OUTPUT_FILE"
+echo "    <meta charset='UTF-8'>" >> "$OUTPUT_FILE"
+echo "    <meta name='viewport' content='width=device-width, initial-scale=1.0'>" >> "$OUTPUT_FILE"
+echo "    <title>tableau-fr</title>" >> "$OUTPUT_FILE"
+echo "</head>" >> "$OUTPUT_FILE"
+echo "<body>" >> "$OUTPUT_FILE"
+echo "    <h1>Tableau des Résultats</h1>" >> "$OUTPUT_FILE"
+echo "    <table border='1'>" >> "$OUTPUT_FILE"
 
-# Read each line in the file (each line is assumed to be a URL)
-while read -r url; do
-    # Get the HTTP response code
-    http_code=$(curl -o /dev/null -s -w "%{http_code}" "$url")
+# Add the table header
+header=$(head -n 1 "$INPUT_FILE")
+echo "        <tr><th>${header//\t/</th><th>}</th></tr>" >> "$OUTPUT_FILE"
 
-    # Get the content of the page
-    content=$(curl -s "$url")
+# Add table rows for each line in the input file
+tail -n +2 "$INPUT_FILE" | while IFS=$'\t' read -r line url http_code encoding word_count; do
+    echo "        <tr><td>$line</td><td>$url</td><td>$http_code</td><td>$encoding</td><td>$word_count</td></tr>" >> "$OUTPUT_FILE"
+done
 
-    # Find the page encoding (if available)
-    encoding=$(echo "$content" | grep -i -o 'charset=[^"]*' | cut -d= -f2)
-    # Set encoding to "N/A" if it wasn't found
-    encoding=${encoding:-"N/A"}
+# Close the HTML structure
+echo "    </table>" >> "$OUTPUT_FILE"
+echo "</body>" >> "$OUTPUT_FILE"
+echo "</html>" >> "$OUTPUT_FILE"
 
-    # Count the number of words in the page content
-    word_count=$(echo "$content" | wc -w)
-
-    # Print the results with tab-separated values
-    echo -e "${line_number}\t${url}\t${http_code}\t${encoding}\t${word_count}"
-
-    # Increase the line number counter by 1
-    line_number=$((line_number + 1))
-done < "$1"
+echo "HTML table generated in $OUTPUT_FILE"
 
