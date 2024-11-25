@@ -111,3 +111,43 @@ git push origin main
 Exercice 4:
 
 J'ai expliqué le fonctionnement de la boucle dans le script comptes.sh. La boucle itère sur les années 2016, 2017, et 2018, utilisant grep pour rechercher le mot "Location" dans les fichiers .ann, puis compte le nombre de lignes contenant ce mot avec wc -l. Le script affiche ensuite le nombre de lieux trouvés pour chaque année.
+
+# Séance 6
+
+## Mini-projet 
+
+Questions :
+1. Pourquoi ne pas utiliser cat ?                                                                 Cat produit simplement le contenu du fichier tel quel, sans aucun traitement tandis que read vous permet de traiter chaque ligne séparément, ce qui vous donne plus de contrôle. Vous pouvez appliquer des transformations, ajouter des numéros de ligne et traiter chaque ligne individuellement par exemple.
+
+3. Comment transformer "urls/fr.txt" en paramètre du script ?
+   Vous pouvez passer le fichier comme argument de ligne de commande pour rendre le script plus flexible. Cela signifie que vous pouvez utiliser n'importe quel fichier en le spécifiant lors de l'exécution du script. On remplace "urls/fr.txt » par $1, qui représente le premier argument de ligne de commande transmis au script.
+
+2.1 Valider l’argument : ajouter le code nécessaire pour s’assurer qu’on donne bien un argument au script, sinon on s’arrête
+  Ajouter une instruction if qui vérifie si $1 est vide pour confirmer que le script a reçu un argument, un nom de fichier, lorsqu'il est exécuté. 
+
+if [ -z "$1" ]; then
+    echo "Erreur : aucun fichier fourni. Veuillez spécifier un fichier."
+    exit 1
+fi
+
+while read -r line; do
+    echo "${line}"
+done < "$1"
+
+3. Comment afficher le numéro de ligne avant chaque URL (sur la même ligne) ?
+• Bien séparer les valeurs par des tabulations
+  Pour les numéros de ligne, on peut utiliser une variable compteur qui s'incrémente à chaque ligne lue. Pour séparer les valeurs par des tabulations, utilisez \t dans l'instruction echo.
+
+# Check if the argument is provided
+if [ -z "$1" ]; then
+    echo "Error: No input file provided."
+    echo "Usage: $0 <file>"
+    exit 1
+fi
+
+# Validate the file exists
+if [ ! -f "$1" ]; then
+    echo "Error: File '$1' not found."
+    exit 1
+fi
+
