@@ -1,0 +1,12 @@
+tableau-fr
+Line	URL	HTTP_Code	Encoding	Word_Count
+1	https://fr.wikipedia.org/wiki/Robot	200	UTF-8	15763
+2	https://fr.wikipedia.org/wiki/Robot_de_cuisine	200	UTF-8	3906
+3	fr.wikipedia.org/wiki/Robot_d%27indexation	301	N/A	0
+4	https://fr.wikipedia.org/wiki/Bot_informatique	200	UTF-8	5813
+5	https://fr.wikipedia.org/wiki/Atlas_(robot)	200	UTF-8	3753
+6	https://roboty.magistry.fr	200	N/A	166
+7	https://fr.wikipedia.org/wiki/Robot_(Leonard_de_Vinci)	404	UTF-8	2107
+8	https://fr.wiktionary.org/wiki/robot	200	UTF-8	12195
+9	https://fr.wikipedia.org/wiki/Protocole_d%27exclusion_des_robots	200	UTF-8	3971
+10	https://fr.wikipedia.org/wiki/Robotique	200	UTF-8	21807
