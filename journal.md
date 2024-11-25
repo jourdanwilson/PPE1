@@ -137,3 +137,17 @@ done < "$1"
 3. Comment afficher le numéro de ligne avant chaque URL (sur la même ligne) ?
 • Bien séparer les valeurs par des tabulations
   Pour les numéros de ligne, on peut utiliser une variable compteur qui s'incrémente à chaque ligne lue. Pour séparer les valeurs par des tabulations, utilisez \t dans l'instruction echo.
+
+# Check if the argument is provided
+if [ -z "$1" ]; then
+    echo "Error: No input file provided."
+    echo "Usage: $0 <file>"
+    exit 1
+fi
+
+# Validate the file exists
+if [ ! -f "$1" ]; then
+    echo "Error: File '$1' not found."
+    exit 1
+fi
+
